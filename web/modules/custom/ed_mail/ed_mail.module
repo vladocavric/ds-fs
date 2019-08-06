@@ -1,0 +1,116 @@
+<?php
+
+function ed_mail_send($params) {
+
+    // Reroute emails
+    $moduleHandler = \Drupal::service('module_handler');
+    if ($moduleHandler->moduleExists('reroute_email')) {
+        // Code Here
+        reroute_email_mail_alter($params);
+    }
+
+    $mailer = new Swift_Mailer(new Swift_MailTransport());
+    $from = \Drupal::config('system.site')->get('mail');
+    $from_name = \Drupal::config('system.site')->get('name');
+
+    $html = [
+        '#theme' => 'ed_mail',
+        '#data' => $params
+    ];
+
+    $message = Swift_Message::newInstance();
+    $message->setSubject($params['subject']);
+    $message->setTo($params['to']);
+    $message->setFrom([$from => $from_name]);
+    $message->setBody(\Drupal::service('renderer')
+        ->renderRoot($html), 'text/html');
+
+    // Attach file if there is attachment
+    if (isset($params['attachment']) && !empty($params['attachment'])) {
+        $message->attach(Swift_Attachment::fromPath($params['attachment']->getFileUri())
+            ->setFilename($params['attachment']->getFilename()));
+    }
+
+    $mailer->send($message);
+
+    $messenger = Drupal::messenger();
+    if (!$message) {
+        $messenger->addError(t('Sending email failed. Please try again.'));
+
+        return FALSE;
+    }
+    else {
+        $messenger->addStatus(t('Email is sent to your address.'));
+
+        return TRUE;
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ed_mail_theme() {
+    $theme = [];
+
+    $theme['ed_mail'] = [
+        'variables' => [
+            'data' => NULL,
+        ],
+        'template' => 'ed_mail',
+    ];
+
+    return $theme;
+}
+
+/**
+ * Implements hook_mail_alter().
+ */
+function ed_mail_mail_alter(&$message) {
+    $keys = ed_mail_get_mail_ids_for_users();
+
+    if (isset($keys[$message['id']])) {
+        $body_text = '';
+        foreach ($message['body'] as $item) {
+            $body_text .= $item;
+        }
+
+        $data = [
+            'subject' => $message['subject'],
+            'body' => check_markup($body_text, 'full_html'),
+            'site_url' => 'http://' . \Drupal::request()->getHost(),
+        ];
+
+        $body = [
+            '#theme' => 'ed_mail',
+            '#data' => $data
+        ];
+
+        unset($message['body']);
+        $message['headers']['Content-Type'] = 'text/html; charset=utf-8';
+        $message['body'][1] = \Drupal::service('renderer')->renderRoot($body);
+    }
+}
+
+function ed_mail_get_mail_ids_for_users() {
+
+    $ids = [
+        'user_register_no_approval_required',
+        'user_register_admin_created',
+        'user_register_pending_approval_admin',
+        'user_register_pending_approval',
+        'user_password_reset',
+        'user_status_activated',
+        'user_status_blocked',
+        'user_cancel_confirm',
+        'user_status_canceled',
+        'webform_submission',
+        'swiftmailer_test',
+    ];
+
+    $keys = [];
+    foreach ($ids as $id) {
+        $keys[$id] = $id;
+    }
+
+    return $keys;
+}

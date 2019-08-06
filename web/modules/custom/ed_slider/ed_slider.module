@@ -1,0 +1,14 @@
+<?php
+
+function ed_slider_theme() {
+    $theme = [
+        'hp_slider' => [
+            'template' => 'hp-slider',
+            'variables' => [
+                'slides' => null,
+            ],
+        ]
+    ];
+
+    return $theme;
+}
