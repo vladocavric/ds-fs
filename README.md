@@ -79,10 +79,24 @@ A new value can be generated with `drush ev '$hash = Drupal\Component\Utility\Cr
 
    `tačka ide na kraju kako se ne bi kopirao ceo repozitorijum nego samo sadrzaj istog` 
 - Obrisati .git folder - `ovo ne vazi samo za pravljenje novog projekta, odnosno ovo ne radimo ako je projekat aktivan`
-- U terminalu “git init” 
-- “git add .”
-- ‘git commit -m "first commit"’
-- “git remote add origin <https>” or “git remote add origin <ssh>”
+- U terminalu 
+    ```
+    git init
+    ``` 
+    ```
+    git add .
+    ```
+    ```
+    git commit -m "first commit"
+    ```
+    ```
+    git remote add origin <https>
+    ```
+    or 
+    ```
+    git remote add origin <ssh>
+    ```
+   `poželjno je da se koristi ssh jer sa https-om git prilikom svakog pusha i poola traži `
 - git push -u origin master
 - “fin up”
 - “fin composer install”
