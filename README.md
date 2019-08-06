@@ -77,7 +77,7 @@ A new value can be generated with `drush ev '$hash = Drupal\Component\Utility\Cr
     git clone <ssh> .
     ``` 
 
-`tačka ide na kraju kako se ne bi kopirao ceo repozitorijum nego samo sadrzaj istog` 
+   `tačka ide na kraju kako se ne bi kopirao ceo repozitorijum nego samo sadrzaj istog` 
 - Obrisati .git folder - `ovo ne vazi samo za pravljenje novog projekta, odnosno ovo ne radimo ako je projekat aktivan`
 - U terminalu “git init” 
 - “git add .”
