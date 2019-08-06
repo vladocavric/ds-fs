@@ -97,20 +97,29 @@ A new value can be generated with `drush ev '$hash = Drupal\Component\Utility\Cr
     git remote add origin <ssh>
     ```
    `poželjno je da se koristi ssh jer sa https-om git prilikom svakog pusha i poola traži `
-- git push -u origin master
-- “fin up”
-- “fin composer install”
-- “fin db import .docksal/settings/ds.sql”
+    ```
+    git push -u origin master
+    ```
+    ```
+    fin up
+    ```
+    ```
+    fin composer install
+    ```
+    ```
+    fin db import .docksal/settings/ds.sql
+    ```
 - U file settings.php dodati na kraju :
-
-$config_directories['sync'] = '../config/sync';
-$databases['default']['default'] = array (
-  'database' => 'default',
-  'username' => 'user',
-  'password' => 'user',
-  'prefix' => '',
-  'host' => 'db',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
+    ```
+    $config_directories['sync'] = '../config/sync';
+    $databases['default']['default'] = array (
+    'database' => 'default',
+    'username' => 'user',
+    'password' => 'user',
+    'prefix' => '',
+    'host' => 'db',
+    'port' => '3306',
+    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+    'driver' => 'mysql',
+    );
+    ```
