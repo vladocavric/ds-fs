@@ -62,3 +62,32 @@ Some common tasks that can be handled by the init script (an other [custom comma
 This repo is intended for quick start demos and includes a hardcoded value for `hash_salt` in `settings.php`.
 If you are basing your project code base on this repo, make sure you regenerate and update the `hash_salt` value.
 A new value can be generated with `drush ev '$hash = Drupal\Component\Utility\Crypt::randomBytesBase64(55); print $hash . "\n";'`
+
+
+
+
+Napravi folder sa nazivom projekta - prve 2 tacke mogu da se preskoce ukoliko se klonira aktivan projekat
+Otvori folder u terminalu
+“git clone <https> .” or “git clone <ssh> .” - tacka ide na kraju kako se ne bi kopirao ceo repozitorijum nego samo sadrzaj istog 
+Obrisati .git folder - ovo ne vazi samo za pravljenje novog projekta, odnosno ovo ne radimo ako je projekat aktivan
+U terminalu “git init” 
+“git add .”
+‘git commit -m "first commit"’
+“git remote add origin <https>” or “git remote add origin <ssh>”
+git push -u origin master
+“fin up”
+“fin composer install”
+“fin db import .docksal/settings/ds.sql”
+U file settings.php dodati na kraju :
+
+$config_directories['sync'] = '../config/sync';
+$databases['default']['default'] = array (
+  'database' => 'default',
+  'username' => 'user',
+  'password' => 'user',
+  'prefix' => '',
+  'host' => 'db',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
