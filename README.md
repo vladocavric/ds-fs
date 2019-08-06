@@ -69,7 +69,10 @@ A new value can be generated with `drush ev '$hash = Drupal\Component\Utility\Cr
 
 - Napravi folder sa nazivom projekta - prve 2 tacke mogu da se preskoce ukoliko se klonira aktivan projekat
 - Otvori folder u terminalu
-- “git clone <https> .” or “git clone <ssh> .” - tacka ide na kraju kako se ne bi kopirao ceo repozitorijum nego samo sadrzaj istog 
+    ```
+    git clone <https> .
+    ``` 
+or “git clone <ssh> .” - tacka ide na kraju kako se ne bi kopirao ceo repozitorijum nego samo sadrzaj istog 
 - Obrisati .git folder - ovo ne vazi samo za pravljenje novog projekta, odnosno ovo ne radimo ako je projekat aktivan
 - U terminalu “git init” 
 - “git add .”
