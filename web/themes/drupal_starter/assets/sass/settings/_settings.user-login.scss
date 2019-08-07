@@ -41,7 +41,7 @@
 		font-weight: 300;
 		padding: 8px;
 		border: 1px solid transparent;
-		border-bottom: 1px solid $black;
+		border-bottom: 1px solid $color-main;
 		width: 100%;
 		margin-bottom: 20px;
 		transition: border-radius 0.25s ease-in-out, border 0.15s ease-in-out, padding 0.25s ease-in-out;
@@ -56,7 +56,7 @@
 		}
 
 		&:focus {
-			border: 1px solid $black;
+			border: 1px solid $primary;
 			border-radius: 30px;
 			padding: 8px 15px;
 			transition: background-color 5000s ease-in-out 0s, border-radius 0.25s ease-in-out, border 0.15s ease-in-out, padding 0.25s ease-in-out;
@@ -90,13 +90,13 @@
 		display: block;
 		min-width: 180px;
 		border-radius: 30px;
-		border: 2px solid $black;
-		background-color: $black;
+		border: 2px solid $primary;
+		background-color: $primary;
 		transition: 0.2s ease-in-out;
 		margin-bottom: 20px;
 
 		&:hover {
-			color: $black;
+			color: $primary;
 			background-color: $white;
 		}
 	}
@@ -122,14 +122,14 @@
 		@include center(x, absolute);
 		width: 0;
 		height: 1px;
-		background-color: $black;
+		background-color: $primary;
 		bottom: 0;
 		transition: 0.2s ease-in-out;
 	}
 
 	&:hover {
 		letter-spacing: 1px;
-		color: $black;
+		color: $primary;
 
 		&::after {
 			width: 100%;

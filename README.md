@@ -123,3 +123,5 @@ A new value can be generated with `drush ev '$hash = Drupal\Component\Utility\Cr
     'driver' => 'mysql',
     );
     ```
+
+- za FE je potrebno jos instalirati gulp.js
