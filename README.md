@@ -124,4 +124,9 @@ A new value can be generated with `drush ev '$hash = Drupal\Component\Utility\Cr
     );
     ```
 
-- za FE je potrebno jos instalirati gulp.js
+- za FE je potrebno jos instalirati gulp.js 
+- neophodno je da je projekat pokrenut
+- navigacija do foldera teme
+    ```
+    fin exec npm ci
+    ```

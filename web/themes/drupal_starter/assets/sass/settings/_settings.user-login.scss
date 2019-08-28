@@ -3,22 +3,22 @@
 //   ======================================================================== */
 .page-user-login,
 .page-user-password {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 35px 15px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 35px 15px;
 }
 
 .s-login-wrap {
-	width: 100%;
-	max-width: 300px;
-	margin: 0 auto;
-	padding: 100px 30px 50px;
-	box-shadow: 0 1px 30px 10px rgba(160, 160, 160, 0.15);
-	border-radius: 5px;
+	animation: puff-in-middle .35s cubic-bezier(.47, 0, .745, .715) both .4s;
 	background-color: $white;
+	border-radius: 5px;
+	box-shadow: 0 1px 30px 10px rgba(160, 160, 160, 0.15);
+	margin: 0 auto;
+	max-width: 300px;
+	padding: 100px 30px 50px;
 	position: relative;
-	animation: puff-in-middle 0.35s cubic-bezier(0.47, 0, 0.745, 0.715) both .4s;
+	width: 100%;
 
 	[id='block-drupal-starter-local-tasks'] {
 		display: none;
@@ -37,14 +37,14 @@
 
 .s-login-box {
 	input:not(.button) {
+		border-bottom: 1px solid $color-main;
+		border: 1px solid transparent;
 		font-size: 15px;
 		font-weight: 300;
-		padding: 8px;
-		border: 1px solid transparent;
-		border-bottom: 1px solid $color-main;
-		width: 100%;
 		margin-bottom: 20px;
+		padding: 8px;
 		transition: border-radius 0.25s ease-in-out, border 0.15s ease-in-out, padding 0.25s ease-in-out;
+		width: 100%;
 
 		@include placeholder {
 			font-size: 15px;
@@ -56,8 +56,8 @@
 		}
 
 		&:focus {
-			border: 1px solid $primary;
 			border-radius: 30px;
+			border: 1px solid $primary;
 			padding: 8px 15px;
 			transition: background-color 5000s ease-in-out 0s, border-radius 0.25s ease-in-out, border 0.15s ease-in-out, padding 0.25s ease-in-out;
 		}
@@ -67,69 +67,69 @@
 		&:-webkit-autofill,
 		&:-webkit-autofill:hover,
 		&:-webkit-autofill:focus {
-			border: 1px solid $black;
 			border-radius: 30px;
+			border: 1px solid $black;
 			padding: 8px 15px;
 			transition: background-color 5000s ease-in-out 0s, border-radius 0.25s ease-in-out, border 0.15s ease-in-out, padding 0.25s ease-in-out;
 		}
 	}
 
 	.form-actions {
+		align-items: center;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
 		margin-top: 30px;
 	}
 
 	.button {
-		color: $white;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		padding: 7px 10px;
-		display: block;
-		min-width: 180px;
+		background-color: $primary;
 		border-radius: 30px;
 		border: 2px solid $primary;
-		background-color: $primary;
-		transition: 0.2s ease-in-out;
+		color: $white;
+		display: block;
+		letter-spacing: 1px;
 		margin-bottom: 20px;
+		min-width: 180px;
+		padding: 7px 10px;
+		text-transform: uppercase;
+		transition: 0.2s ease-in-out;
 
 		&:hover {
-			color: $primary;
 			background-color: $white;
+			color: $primary;
 		}
 	}
 
 	p {
+		color: $boulder;
 		font-size: 14px;
 		line-height: 1.1;
 		text-align: center;
-		color: $boulder;
 	}
 }
 
 .s-login-reset-pass {
+	color: $boulder;
 	font-size: 15px;
 	letter-spacing: 0.3px;
-	color: $boulder;
+	position: relative;
 	text-transform: capitalize;
 	transition: 0.2s ease-in-out;
-	position: relative;
 
 	&::after {
-		content: '';
 		@include center(x, absolute);
-		width: 0;
-		height: 1px;
 		background-color: $primary;
 		bottom: 0;
+		content: '';
+		height: 1px;
 		transition: 0.2s ease-in-out;
+		width: 0;
 	}
 
 	&:hover {
-		letter-spacing: 1px;
 		color: $primary;
+		letter-spacing: 1px;
 
 		&::after {
 			width: 100%;
@@ -138,54 +138,54 @@
 }
 
 .s-login-logo {
-	display: flex;
 	align-items: center;
-	justify-content: center;
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	position: absolute;
-	left: 50%;
-	top: 0;
-	z-index: 1;
-	transform: translate(-50%, -50%);
 	background-color: $white;
+	border-radius: 50%;
 	box-shadow: 0 1px 30px 10px rgba(160, 160, 160, 0.1);
+	display: flex;
+	height: 100px;
+	justify-content: center;
+	left: 50%;
+	position: absolute;
+	top: 0;
+	transform: translate(-50%, -50%);
 	transition: transform 0.1s ease-in-out;
+	width: 100px;
+	z-index: 1;
 
 	&::before {
-		content: attr(tooltip);
-		color: $boulder;
-		display: block;
-		width: 100vw;
-		max-width: 300px;
-		position: absolute;
 		bottom: 0;
-		text-align: center;
-		font-size: 14px;
-		pointer-events: none;
-		letter-spacing: -0.5em;
-		opacity: 0;
-		transform: translateY(15px);
+		color: $boulder;
+		content: attr(tooltip);
+		display: block;
 		filter: blur(10px);
-		transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+		font-size: 14px;
+		letter-spacing: -0.5em;
+		max-width: 300px;
+		opacity: 0;
+		pointer-events: none;
+		position: absolute;
+		text-align: center;
+		transform: translateY(15px);
 		transition-delay: 0.1s;
+		transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+		width: 100vw;
 	}
 
 	&:hover {
 		transform: scale(1.05) translate(-48%, -48%);
 
 		&::before {
-			transform: translateY(25px);
+			filter: blur(0);
 			letter-spacing: 0;
 			opacity: 1;
-			filter: blur(0);
+			transform: translateY(25px);
 			transition-delay: 0.3s;
 		}
 	}
 
 	img {
-		width: 65%;
 		animation: puff-in-center 0.3s cubic-bezier(0.47, 0, 0.745, 0.715) both 1s;
+		width: 65%;
 	}
 }
